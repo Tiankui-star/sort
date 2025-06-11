@@ -2,12 +2,14 @@
 #include<random>
 #include<iostream>
 #include<iomanip>
+#include <SFML/Graphics.hpp>
+
 #pragma once
 template<typename T>
 class sort
 {
 public:
-	virtual void algorithm_sort(int low, int high) = 0;
+	virtual void algorithm_sort(int low, int high, sf::RenderWindow& window) = 0;
 	T size, t;
 	std::vector<T> a;
 	int sort_count = 0;
@@ -20,8 +22,8 @@ void sort<T>::set()
 	std::random_device rd;
 	int count = 0;
 	std::mt19937 ged(rd());
-	std::uniform_int_distribution<> dis1(1, 100);
-	std::uniform_int_distribution<> dis2(1, 100); //生成int/double型随机数 uniform_int_distribution<> int/ uniform_real_distribution<> double
+	std::uniform_int_distribution<> dis1(1, 20);
+	std::uniform_int_distribution<> dis2(1, 50); //生成int/double型随机数 uniform_int_distribution<> int/ uniform_real_distribution<> double
 	size = dis1(ged);
 	std::cout << "generate " << size << " digitals and they are" << std::endl;
 	for (int i = 0; i < size; i++)
